@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,8 @@ import android.widget.ImageView;
 
 
 public class LogIn extends Activity implements View.OnClickListener {
+
+    private ResideMenu resideMenu = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,27 @@ public class LogIn extends Activity implements View.OnClickListener {
 
         Button signupButton = (Button) findViewById(R.id.signupButton);
         signupButton.setOnClickListener(this);
+
+        // attach to current activity;
+        resideMenu = new ResideMenu(this);
+        resideMenu.attachToActivity(this);
+
+        // create menu items;
+        String titles[] = { "Home", "Profile", "Calendar", "Settings" };
+        int icon[] = { R.drawable.icon_home, R.drawable.icon_profile, R.drawable.icon_calendar, R.drawable.icon_settings };
+
+        for (int i = 0; i < titles.length; i++){
+            ResideMenuItem item = new ResideMenuItem(this, icon[i], titles[i]);
+            item.setOnClickListener(this);
+            if(i % 2 == 0) {
+                resideMenu.addMenuItem(item, ResideMenu.DIRECTION_LEFT); // or  ResideMenu.DIRECTION_RIGHT
+            }
+            else{
+                resideMenu.addMenuItem(item, ResideMenu.DIRECTION_RIGHT);
+            }
+        }
+
+        this.getActionBar().hide();
 
     }
 
@@ -59,14 +83,19 @@ public class LogIn extends Activity implements View.OnClickListener {
 
         switch (v.getId()){
             case R.id.loginButton:
-                mIntent = new Intent(this, Salon.class);
-                mIntent.putExtra("username", username);
+                //mIntent = new Intent(this, Salon.class);
+                //mIntent.putExtra("username", username);
                 break;
             case R.id.signupButton:
-                mIntent = new Intent(this, SignUp.class);
+               // mIntent = new Intent(this, SignUp.class);
                 break;
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return resideMenu.dispatchTouchEvent(ev);
     }
 }
