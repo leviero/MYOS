@@ -6,12 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.achep.header2actionbar.FadingActionBarHelper;
-
-
 public class Stylist extends Activity {
 
-    private FadingActionBarHelper mFadingActionBarHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +38,5 @@ public class Stylist extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public FadingActionBarHelper getFadingActionBarHelper() {
-        return mFadingActionBarHelper;
     }
 }
