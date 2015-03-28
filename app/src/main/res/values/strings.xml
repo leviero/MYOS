@@ -7,5 +7,6 @@
     <string name="title_activity_salon">Salon</string>
     <string name="title_activity_salon_adapter">SalonAdapter</string>
     <string name="title_activity_stylist">Stylist</string>
+    <string name="title_activity_salon_profile">SalonProfile</string>
 
 </resources>

@@ -10,13 +10,13 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffebbb">
+        android:background="#fffffbfd">
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="99dp"
             android:id="@+id/imageView3"
-            android:src="@drawable/user_picture" />
+            android:src="@drawable/mega_hair" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -24,12 +24,13 @@
             android:layout_height="fill_parent"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            android:background="#ffffebbb">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name: Owen"
+                android:text="Name: Alison Lau Wai Ha"
                 android:id="@+id/textView4" />
 
             <TextView
@@ -65,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="SELECT SALON"
+            android:text="SELECT BARBER"
             android:id="@+id/textView5"
             android:layout_weight="0.98"
             android:textColor="#ffffffff"
@@ -88,7 +89,7 @@
     </LinearLayout>
 
     <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/cardList"-->
+        <!--android:id="@+id/salonProfileCardList"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
         <!--/>-->

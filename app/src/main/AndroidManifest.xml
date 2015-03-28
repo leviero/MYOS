@@ -32,13 +32,17 @@
             android:label="@string/title_activity_salon" >
         </activity>
 
-        <!--<meta-data-->
-            <!--android:name="com.google.android.gms.version"-->
-            <!--android:value="@integer/google_play_services_version" />-->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.version" -->
+        <!-- android:value="@integer/google_play_services_version" /> -->
 
         <activity
             android:name=".Stylist"
             android:label="@string/title_activity_stylist" >
+        </activity>
+        <activity
+            android:name=".SalonProfile"
+            android:label="@string/title_activity_salon_profile" >
         </activity>
     </application>
 

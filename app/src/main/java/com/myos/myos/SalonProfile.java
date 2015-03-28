@@ -1,8 +1,6 @@
 package com.myos.myos;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,23 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Salon extends Activity implements View.OnClickListener {
+public class SalonProfile extends Activity implements View.OnClickListener {
     private ResideMenu resideMenu = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_my);
 
-        setContentView(R.layout.activity_salon);
-        RecyclerView recList = (RecyclerView) findViewById(R.id.cardList);
+        setContentView(R.layout.activity_salon_profile);
+        RecyclerView recList = (RecyclerView) findViewById(R.id.salonProfileCardList);
         recList.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
-        recList.setOnClickListener(this);
-        SalonAdapter ca = new SalonAdapter(createList(30));
-        recList.setAdapter(ca);
-
         // attach to current activity;
         resideMenu = new ResideMenu(this);
         resideMenu.attachToActivity(this);
@@ -51,6 +45,8 @@ public class Salon extends Activity implements View.OnClickListener {
             }
         }
 
+        SalonProfileAdapter ca = new SalonProfileAdapter(createList(30));
+        recList.setAdapter(ca);
 
         this.getActionBar().hide();
     }
@@ -59,7 +55,7 @@ public class Salon extends Activity implements View.OnClickListener {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_salon, menu);
+        getMenuInflater().inflate(R.menu.menu_salon_profile, menu);
         return true;
     }
 
@@ -78,66 +74,65 @@ public class Salon extends Activity implements View.OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
-    private List<SalonInfo> createList(int size) {
+    private List<SalonProfileInfo> createList(int size) {
 
-        List<SalonInfo> result = new ArrayList<SalonInfo>();
+        List<SalonProfileInfo> result = new ArrayList<SalonProfileInfo>();
         // first salon
-        SalonInfo si1 = new SalonInfo();
-            si1.name = "Mega Hair";
-            si1.location = "HKUST";
-            si1.priceRange = "HKD50 - HKD100";
-        si1.picture = R.drawable.mega_hair;
-            result.add(si1);
+        SalonProfileInfo si1 = new SalonProfileInfo();
+        si1.name = "Alison Lau Wai Ha";
+        si1.recommendation = "50 people";
+        si1.review = "30 people";
+        si1.picture = R.drawable.stylist;
+        result.add(si1);
 
         // first salon
-        SalonInfo si2 = new SalonInfo();
-        si2.name = "QB House";
-        si2.location = "Hang Hau";
-        si2.priceRange = "HKD50 - HKD100";
-        si2.picture = R.drawable.qb;
+        SalonProfileInfo si2 = new SalonProfileInfo();
+        si2.name = "Charles Kim Mak";
+        si2.recommendation = "24 people";
+        si2.review = "6 people";
+        si2.picture = R.drawable.b1;
         result.add(si2);
 
         // first salon
-        SalonInfo si3 = new SalonInfo();
-        si3.name = "Mandarin House";
-        si3.location = "Tsim Sha Tsui";
-        si3.priceRange = "HKD200 - HKD300";
-        si3.picture = R.drawable.mandarin;
+        SalonProfileInfo si3 = new SalonProfileInfo();
+        si3.name = "Sammy Tang Wan Wui";
+        si3.recommendation = "22 people";
+        si3.review = "Coming Soon!";
+        si3.picture = R.drawable.b2;
         result.add(si3);
 
         // first salon
-        SalonInfo si4 = new SalonInfo();
-        si4.name = "Gentleman's Tonic";
-        si4.location = "Central";
-        si4.priceRange = "HKD500 - HKD900";
-        si4.picture = R.drawable.gentlemen;
+        SalonProfileInfo si4 = new SalonProfileInfo();
+        si4.name = "Tim Ho Wan";
+        si4.recommendation = "20 people";
+        si4.review = "3 people";
+        si4.picture = R.drawable.b3;
         result.add(si4);
 
         // first salon
-        SalonInfo si5 = new SalonInfo();
-        si5.name = "Salon Nova";
-        si5.location = "Central";
-        si5.priceRange = "HKD200 - HKD300";
-        si5.picture = R.drawable.sn;
+        SalonProfileInfo si5 = new SalonProfileInfo();
+        si5.name = "Michael Cung Kit Ha";
+        si5.recommendation = "15 people";
+        si5.review = "2 people";
+        si5.picture = R.drawable.b4;
         result.add(si5);
 
-        SalonInfo si6 = new SalonInfo();
-        si6.name = "Tony & Guy";
-        si6.location = "Central";
-        si6.priceRange = "HKD200 - HKD300";
-        si6.picture = R.drawable.tg;
+        SalonProfileInfo si6 = new SalonProfileInfo();
+        si6.name = "Edison Fung Ho Yin";
+        si6.recommendation = "12 people";
+        si6.review = "5 people";
+        si6.picture = R.drawable.b5;
         result.add(si6);
 
         return result;
     }
-
-    @Override
-    public void onClick(View v) {
-//        Intent mIntent = new Intent(this, Salon.class);
-//        startActivity(mIntent);
-    }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return resideMenu.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
