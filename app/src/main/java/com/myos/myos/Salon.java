@@ -1,6 +1,7 @@
 package com.myos.myos;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +19,11 @@ import java.util.List;
 
 public class Salon extends Activity implements View.OnClickListener {
     private ResideMenu resideMenu = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_my);
-
         setContentView(R.layout.activity_salon);
         RecyclerView recList = (RecyclerView) findViewById(R.id.cardList);
         recList.setHasFixedSize(true);
@@ -31,6 +33,7 @@ public class Salon extends Activity implements View.OnClickListener {
         recList.setOnClickListener(this);
         SalonAdapter ca = new SalonAdapter(createList(30));
         recList.setAdapter(ca);
+
 
         // attach to current activity;
         resideMenu = new ResideMenu(this);
@@ -133,8 +136,8 @@ public class Salon extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-//        Intent mIntent = new Intent(this, Salon.class);
-//        startActivity(mIntent);
+        Intent mIntent = new Intent(this, Salon.class);
+        startActivity(mIntent);
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

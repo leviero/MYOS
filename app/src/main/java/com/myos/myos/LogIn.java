@@ -83,7 +83,7 @@ public class LogIn extends Activity implements View.OnClickListener {
 
         switch (v.getId()){
             case R.id.loginButton:
-                mIntent = new Intent(this, SalonProfile.class);
+                mIntent = new Intent(this, Salon.class);
                 mIntent.putExtra("username", username);
                 startActivity(mIntent);
                 break;

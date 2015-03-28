@@ -44,6 +44,14 @@
             android:name=".SalonProfile"
             android:label="@string/title_activity_salon_profile" >
         </activity>
+        <activity
+            android:name=".Customization"
+            android:label="@string/title_activity_customization" >
+        </activity>
+        <activity
+            android:name=".Payment"
+            android:label="@string/title_activity_payment" >
+        </activity>
     </application>
 
 </manifest>
