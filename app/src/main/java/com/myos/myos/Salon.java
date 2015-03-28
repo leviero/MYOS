@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Salon extends Activity implements View.OnClickListener {
+public class Salon extends Activity implements View.OnClickListener, View.OnTouchListener {
     private ResideMenu resideMenu = null;
 
     @Override
@@ -31,6 +31,7 @@ public class Salon extends Activity implements View.OnClickListener {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
         recList.setOnClickListener(this);
+        recList.setOnTouchListener(this);
         SalonAdapter ca = new SalonAdapter(createList(30));
         recList.setAdapter(ca);
 
@@ -136,11 +137,20 @@ public class Salon extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent mIntent = new Intent(this, Salon.class);
-        startActivity(mIntent);
+//        Intent mIntent = new Intent(this, Salon.class);
+//        startActivity(mIntent);
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return resideMenu.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+        Intent mIntent = new Intent(this, SalonProfile.class);
+            startActivity(mIntent);
+        }
+        return false;
     }
 }

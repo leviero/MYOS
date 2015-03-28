@@ -1,6 +1,7 @@
 package com.myos.myos;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SalonProfile extends Activity implements View.OnClickListener {
+public class SalonProfile extends Activity implements View.OnClickListener, View.OnTouchListener {
     private ResideMenu resideMenu = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class SalonProfile extends Activity implements View.OnClickListener {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
+        recList.setOnTouchListener(this);
         // attach to current activity;
         resideMenu = new ResideMenu(this);
         resideMenu.attachToActivity(this);
@@ -129,6 +131,15 @@ public class SalonProfile extends Activity implements View.OnClickListener {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return resideMenu.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            Intent mIntent = new Intent(this, Customization.class);
+            startActivity(mIntent);
+        }
+        return false;
     }
 
     @Override

@@ -35,8 +35,9 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/imageView4"
-                android:src="@drawable/barber_symbol" />
+                android:id="@+id/barberIV"
+                android:src="@drawable/barber_symbol"
+                android:clickable="true" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -113,9 +114,10 @@
         android:layout_width="178dp"
         android:layout_height="82dp"
         android:text="Proceed"
-        android:id="@+id/button"
+        android:id="@+id/proceed"
         android:gravity="center"
         android:layout_gravity="center"
-        android:textSize="32dp" />
+        android:textSize="32dp"
+        android:enabled="true" />
 
 </LinearLayout>

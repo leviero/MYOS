@@ -1,7 +1,9 @@
 package com.myos.myos;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,6 +35,7 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
         salonViewHolder.vLocation.setText(ci.location);
         salonViewHolder.vPriceRange.setText(ci.priceRange);
         salonViewHolder.vShopImage.setImageResource(ci.picture);
+
     }
 
     @Override
@@ -41,8 +44,10 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
                 from(viewGroup.getContext()).
                 inflate(R.layout.card_layout, viewGroup, false);
 
+
         return new SalonViewHolder(itemView);
     }
+
 
     public static class SalonViewHolder extends RecyclerView.ViewHolder {
 
