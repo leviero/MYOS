@@ -1,21 +1,29 @@
 package com.myos.myos;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
+import com.nispok.snackbar.listeners.ActionClickListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class StylistProfile extends Activity implements View.OnClickListener {
+public class StylistProfile extends Activity implements View.OnClickListener, View.OnTouchListener, ActionClickListener {
 
     private ResideMenu resideMenu = null;
+    private MotionEvent prevEvent = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,7 @@ public class StylistProfile extends Activity implements View.OnClickListener {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
+        recList.setOnTouchListener(this);
 
         StylistProfileAdapter ca = new StylistProfileAdapter(createList(30));
         recList.setAdapter(ca);
@@ -119,5 +128,31 @@ public class StylistProfile extends Activity implements View.OnClickListener {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return resideMenu.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_SCROLL){
+        }
+        else if(event.getAction() == MotionEvent.ACTION_UP) {
+            SnackbarManager.show(
+                    Snackbar.with(getApplicationContext()) // context
+                            .text("Use This Hairstyle") // text to display
+                            .actionLabel("Go") // action button label
+                            .actionColor(Color.RED).
+                            actionListener(this) // action button's ActionClickListener
+                    , this); // activity where it is displayed
+
+
+        }
+        prevEvent = event;
+        return false;
+    }
+
+
+    @Override
+    public void onActionClicked(Snackbar snackbar) {
+        Intent mIntent = new Intent(this, Customization.class);
+        startActivity(mIntent);
     }
 }

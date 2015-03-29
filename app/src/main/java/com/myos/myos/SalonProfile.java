@@ -135,7 +135,7 @@ public class SalonProfile extends Activity implements View.OnClickListener, View
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+        if(event.getAction() == MotionEvent.ACTION_UP) {
             Intent mIntent = new Intent(this, StylistProfile.class);
             startActivity(mIntent);
         }
