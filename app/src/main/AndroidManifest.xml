@@ -32,13 +32,21 @@
             android:label="@string/title_activity_salon" >
         </activity>
 
-        <!--<meta-data-->
-            <!--android:name="com.google.android.gms.version"-->
-            <!--android:value="@integer/google_play_services_version" />-->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.version" -->
+        <!-- android:value="@integer/google_play_services_version" /> -->
 
         <activity
             android:name=".Stylist"
             android:label="@string/title_activity_stylist" >
+        </activity>
+        <activity
+            android:name=".StylistProfile"
+            android:label="@string/title_activity_stylist_profile" >
+        </activity>
+        <activity
+            android:name=".StylistProfileAdapter"
+            android:label="@string/title_activity_stylist_profile_adapter" >
         </activity>
     </application>
 

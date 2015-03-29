@@ -13,9 +13,6 @@ public class Stylist extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stylist);
 
-        Intent mIntent = getIntent();
-        String stylistName = mIntent.getStringExtra("stylistName");
-
     }
 
     @Override

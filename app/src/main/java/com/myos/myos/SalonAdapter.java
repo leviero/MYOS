@@ -20,7 +20,6 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
         this.salonList = salonList;
     }
 
-
     @Override
     public int getItemCount() {
         return salonList.size();

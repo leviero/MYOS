@@ -6,12 +6,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Salon extends Activity {
+public class Salon extends Activity implements View.OnClickListener{
+
+    private ResideMenu resideMenu = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,26 @@ public class Salon extends Activity {
 
         SalonAdapter ca = new SalonAdapter(createList(30));
         recList.setAdapter(ca);
+
+        // attach to current activity;
+        resideMenu = new ResideMenu(this);
+        resideMenu.attachToActivity(this);
+
+        // create menu items;
+        String titles[] = { "Home", "Profile", "Calendar", "Settings" };
+        int icon[] = { R.drawable.icon_home, R.drawable.icon_profile, R.drawable.icon_calendar, R.drawable.icon_settings };
+
+        for (int i = 0; i < titles.length; i++){
+            ResideMenuItem item = new ResideMenuItem(this, icon[i], titles[i]);
+            item.setOnClickListener(this);
+            if(i % 2 == 0) {
+                resideMenu.addMenuItem(item, ResideMenu.DIRECTION_LEFT); // or  ResideMenu.DIRECTION_RIGHT
+            }
+            else{
+                resideMenu.addMenuItem(item, ResideMenu.DIRECTION_RIGHT);
+            }
+        }
+
         this.getActionBar().hide();
     }
 
@@ -58,11 +82,11 @@ public class Salon extends Activity {
         List<SalonInfo> result = new ArrayList<SalonInfo>();
         // first salon
         SalonInfo si1 = new SalonInfo();
-            si1.name = "Mega Hair";
-            si1.location = "HKUST";
-            si1.priceRange = "HKD50 - HKD100";
+        si1.name = "Mega Hair";
+        si1.location = "HKUST";
+        si1.priceRange = "HKD50 - HKD100";
         si1.picture = R.drawable.mega_hair;
-            result.add(si1);
+        result.add(si1);
 
         // first salon
         SalonInfo si2 = new SalonInfo();
@@ -104,5 +128,15 @@ public class Salon extends Activity {
         result.add(si6);
 
         return result;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return resideMenu.dispatchTouchEvent(ev);
     }
 }
