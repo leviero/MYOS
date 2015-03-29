@@ -9,5 +9,8 @@
     <string name="title_activity_stylist">Stylist</string>
     <string name="title_activity_stylist_profile">StylistProfile</string>
     <string name="title_activity_stylist_profile_adapter">StylistProfileAdapter</string>
+    <string name="title_activity_salon_profile">SalonProfile</string>
+    <string name="title_activity_customization">Customization</string>
+    <string name="title_activity_payment">Payment</string>
 
 </resources>
