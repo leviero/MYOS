@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.GridLayout;
 
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
@@ -135,15 +137,16 @@ public class StylistProfile extends Activity implements View.OnClickListener, Vi
         if(event.getAction() == MotionEvent.ACTION_SCROLL){
         }
         else if(event.getAction() == MotionEvent.ACTION_UP) {
-            SnackbarManager.show(
-                    Snackbar.with(getApplicationContext()) // context
-                            .text("Use This Hairstyle") // text to display
-                            .actionLabel("Go") // action button label
-                            .actionColor(Color.RED).
-                            actionListener(this) // action button's ActionClickListener
-                    , this); // activity where it is displayed
+//            SnackbarManager.show(
+//                    Snackbar.with(getApplicationContext()) // context
+//                            .text("Use This Hairstyle") // text to display
+//                            .actionLabel("Go") // action button label
+//                            .actionColor(Color.RED).
+//                            actionListener(this) // action button's ActionClickListener
+//                    , this); // activity where it is displayed
 
-
+            Intent mIntent = new Intent(this, Customization.class);
+            startActivity(mIntent);
         }
         prevEvent = event;
         return false;
@@ -152,7 +155,6 @@ public class StylistProfile extends Activity implements View.OnClickListener, Vi
 
     @Override
     public void onActionClicked(Snackbar snackbar) {
-        Intent mIntent = new Intent(this, Customization.class);
-        startActivity(mIntent);
+
     }
 }

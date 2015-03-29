@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:id="@+id/imageView3"
-            android:src="@drawable/b1" />
+            android:src="@drawable/stylist" />
 
     </LinearLayout>
 
