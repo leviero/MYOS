@@ -96,7 +96,7 @@ public class Customization extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent mIntent = new Intent(this, Payment.class);
+        Intent mIntent = new Intent(this, Scheduling.class);
         startActivity(mIntent);
 
     }
