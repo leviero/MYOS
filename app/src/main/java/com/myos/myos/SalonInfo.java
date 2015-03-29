@@ -9,5 +9,4 @@ public class SalonInfo {
         protected String priceRange;
         protected int picture;
 
-
 }

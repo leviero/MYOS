@@ -1,32 +1,35 @@
 package com.myos.myos;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class LogIn extends Activity implements View.OnClickListener {
+public class StylistProfile extends Activity implements View.OnClickListener {
 
     private ResideMenu resideMenu = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in);
+        setContentView(R.layout.activity_stylist_profile);
 
-        Button loginButton = (Button) findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(this);
+        RecyclerView recList = (RecyclerView) findViewById(R.id.stylistProfileCardList);
+        recList.setHasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
 
-        Button signupButton = (Button) findViewById(R.id.signupButton);
-        signupButton.setOnClickListener(this);
+        StylistProfileAdapter ca = new StylistProfileAdapter(createList(30));
+        recList.setAdapter(ca);
 
         // attach to current activity;
         resideMenu = new ResideMenu(this);
@@ -48,14 +51,12 @@ public class LogIn extends Activity implements View.OnClickListener {
         }
 
         this.getActionBar().hide();
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_log_in, menu);
+        getMenuInflater().inflate(R.menu.menu_stylist_profile, menu);
         return true;
     }
 
@@ -74,27 +75,44 @@ public class LogIn extends Activity implements View.OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
+    private List<StylistProfileInfo> createList(int size) {
+
+        List<StylistProfileInfo> result = new ArrayList<StylistProfileInfo>();
+
+        // first salon
+        StylistProfileInfo si1 = new StylistProfileInfo();
+        si1.picture = R.drawable.aa;
+        result.add(si1);
+
+        // first salon
+        StylistProfileInfo si2 = new StylistProfileInfo();
+        si2.picture = R.drawable.bb;
+        result.add(si2);
+
+        // first salon
+        StylistProfileInfo si3 = new StylistProfileInfo();
+        si3.picture = R.drawable.cc;
+        result.add(si3);
+
+        // first salon
+        StylistProfileInfo si4 = new StylistProfileInfo();
+        si4.picture = R.drawable.dd;
+        result.add(si4);
+
+        // first salon
+        StylistProfileInfo si5 = new StylistProfileInfo();
+        si5.picture = R.drawable.ee;
+        result.add(si5);
+
+        StylistProfileInfo si6 = new StylistProfileInfo();
+        si6.picture = R.drawable.ff;
+        result.add(si6);
+
+        return result;
+    }
+
     @Override
     public void onClick(View v) {
-
-        String username = ((EditText) findViewById(R.id.username)).getText().toString();
-
-        Intent mIntent;
-
-        switch (v.getId()){
-            case R.id.loginButton:
-                mIntent = new Intent(this, Salon.class);
-                mIntent.putExtra("username", username);
-                startActivity(mIntent);
-                break;
-            case R.id.signupButton:
-                mIntent = new Intent(this, StylistProfile.class);
-                mIntent.putExtra("username", username);
-                startActivity(mIntent);
-                break;
-            default:
-                break;
-        }
 
     }
 

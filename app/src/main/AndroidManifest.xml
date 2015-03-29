@@ -41,6 +41,14 @@
             android:label="@string/title_activity_stylist" >
         </activity>
         <activity
+            android:name=".StylistProfile"
+            android:label="@string/title_activity_stylist_profile" >
+        </activity>
+        <activity
+            android:name=".StylistProfileAdapter"
+            android:label="@string/title_activity_stylist_profile_adapter" >
+        </activity>
+        <activity
             android:name=".SalonProfile"
             android:label="@string/title_activity_salon_profile" >
         </activity>
