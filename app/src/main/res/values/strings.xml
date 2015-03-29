@@ -12,5 +12,6 @@
     <string name="title_activity_salon_profile">SalonProfile</string>
     <string name="title_activity_customization">Customization</string>
     <string name="title_activity_payment">Payment</string>
+    <string name="title_activity_scheduling">Scheduling</string>
 
 </resources>

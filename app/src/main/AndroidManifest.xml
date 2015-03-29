@@ -60,6 +60,10 @@
             android:name=".Payment"
             android:label="@string/title_activity_payment" >
         </activity>
+        <activity
+            android:name=".Scheduling"
+            android:label="@string/title_activity_scheduling" >
+        </activity>
     </application>
 
 </manifest>
