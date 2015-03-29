@@ -1,11 +1,15 @@
 package com.myos.myos;
 
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 
 import java.util.Calendar;
@@ -20,6 +24,9 @@ public class Scheduling extends Activity implements View.OnClickListener, Calend
         setContentView(R.layout.activity_scheduling);
 
         initializeCalendar();
+
+        Button selectButton = (Button) findViewById(R.id.select_button);
+        selectButton.setOnClickListener(this);
 
         this.getActionBar().hide();
     }
@@ -57,12 +64,27 @@ public class Scheduling extends Activity implements View.OnClickListener, Calend
 
     @Override
     public void onClick(View v) {
+        Intent mIntent;
 
+        switch (v.getId()){
+            case R.id.select_button:
+                mIntent = new Intent(this, Payment.class);
+                startActivity(mIntent);
+                break;
+            default:
+                break;
+        }
     }
+
+    long startMillis;
 
     @Override
     public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-        Intent mIntent = new Intent(this, Payment.class);
-        startActivity(mIntent);
+        Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+        builder.appendPath("time");
+        ContentUris.appendId(builder, startMillis);
+        Intent intent = new Intent(Intent.ACTION_VIEW)
+                .setData(builder.build());
+        startActivity(intent);
     }
 }
